@@ -1,6 +1,5 @@
 from pathlib import Path 
-path = 'cats.txt'
-
+import pprint
 
 def get_cats_info(path):
     catsinfo = []
@@ -9,12 +8,9 @@ def get_cats_info(path):
             id, name, age = line.strip().split(',')
             cat = {"id": id, "name": name, "age": age}
             catsinfo.append(cat)
-    result = '[\n'
-    for cat in catsinfo:
-        result += f'   {cat},\n'
-    result += ']'
-    return result
-
-
-print(get_cats_info(path))
     
+    return catsinfo
+
+
+cats_info = get_cats_info('cats.txt')
+pprint.pprint(cats_info)
