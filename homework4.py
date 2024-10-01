@@ -17,12 +17,15 @@ def change_contact(args, contacts):
     return "Contact updated"
 
 def show_phone(args, contacts):
-    name = args[0]
-    phone = contacts.get(name)
-    if phone: 
-        return phone
-    else: 
-        return "Ім'я не знайдено"
+    try:
+        name = args[0]
+        phone = contacts.get(name)
+        if phone: 
+            return phone
+        else: 
+            return "Ім'я не знайдено"
+    except IndexError:
+        return f"Ви не ввели ім'я "
 
 def show_all(contacts):
     result = []
@@ -46,7 +49,7 @@ def main():
             print(add_contact(args, contacts))
         elif command == "change":
             print(change_contact(args, contacts))
-        elif command == "show":
+        elif command == "phone":
             print(show_phone(args, contacts))
         elif command == "all":
             print(show_all(contacts))
